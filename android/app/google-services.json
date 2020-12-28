@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "279600104980",
+    "project_id": "biolegeuserapp",
+    "storage_bucket": "biolegeuserapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279600104980:android:e4cd3b311325351d580901",
+        "android_client_info": {
+          "package_name": "com.biolege.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279600104980-h3jnqlbu5l2hjb46sqn4vc79p2e2bmad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biolege.user",
+            "certificate_hash": "35b0276824844cb9a0014505b7e3dda0f3d21f22"
+          }
+        },
+        {
+          "client_id": "279600104980-10soeapputj2antpukrvk63bcpbkhvgn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp1lZD0O4N2681dKxMZmCgVPXD5QwRFQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279600104980-10soeapputj2antpukrvk63bcpbkhvgn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
