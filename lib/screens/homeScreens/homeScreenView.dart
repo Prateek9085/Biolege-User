@@ -4,6 +4,7 @@ import '../../app/size_configuration.dart';
 import '../../theme/theme.dart';
 import '../../widgets/reusables.dart';
 import 'homeScreenViewModel.dart';
+import 'patientDetailsScreen/appointment_initial.dart';
 
 class HomeScreenView extends StatefulWidget {
   static const routeName = "/homeScreenView";
@@ -21,32 +22,96 @@ class _HomeScreenViewState extends State<HomeScreenView> {
               automaticallyImplyLeading: false,
               leadingWidth: SizeConfig.screenWidth / 3,
               leading: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Row(
-                  children: [
-                    Icon(Icons.location_pin),
-                    Text(
-                      "Dona clinic",
-                      style: TextStyle(color: offBlack2),
-                    ),
-                  ],
+                padding: const EdgeInsets.only(right: 10),
+                child: Image.asset(
+                  logoPath,
+                  width: SizeConfig.screenWidth / 4.5,
                 ),
               ),
               centerTitle: true,
               title: Text(
-                "Today",
+                "Location",
                 style: TextStyle(color: offBlack1, fontSize: 18),
               ),
               actions: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset(
-                    logoPath,
-                    width: SizeConfig.screenWidth / 4.5,
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Row(
+                    children: [
+                      Icon(Icons.phone),
+                      Text(
+                        "Hojai\nCustomer Support",
+                        style: TextStyle(color: offBlack2),
+                      ),
+                    ],
                   ),
-                )
+                ),
               ]),
-          body: model.widgetOptions.elementAt(model.getIndex),
+          body: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 20, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      child: Text(
+                        'Diagonistic',
+                        style: TextStyle(fontFamily: 'Nunito'),
+                      ),
+                      onTap: () {
+                        print("tapped on text");
+                      },
+                    ),
+                    InkWell(
+                      child: Text(
+                        'Appoitment',
+                        style: TextStyle(fontFamily: 'Nunito'),
+                      ),
+                      onTap: () {
+                        print("tapped on text");
+                      },
+                    ),
+                    InkWell(
+                      child: Text(
+                        'Phermachy',
+                        style: TextStyle(fontFamily: 'Nunito'),
+                      ),
+                      onTap: () {
+                        print("tapped on text");
+                      },
+                    ),
+                    InkWell(
+                      child: Text(
+                        'Healthfeed',
+                        style: TextStyle(fontFamily: 'Nunito'),
+                      ),
+                      onTap: () {
+                        print("tapped on container");
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(.4),
+                        blurRadius: 10,
+                      )
+                    ],
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(30)),
+                  ),
+                  child: AppointmentPage(),
+                ),
+              ),
+            ],
+          ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: model.getIndex,
             onTap: (selIndex) => model.setCurrentIndex(selIndex),

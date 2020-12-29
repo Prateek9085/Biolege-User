@@ -19,12 +19,13 @@ class HomeScreenViewModel extends BaseViewModel {
 
   List<BottomNavigationBarItem> items = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
-        icon: Icon(MaterialIcons.assignment), label: 'Appointments'),
-    BottomNavigationBarItem(icon: Icon(FontAwesome5.user), label: 'Doctors'),
+        icon: Icon(MaterialIcons.assignment), label: 'Home'),
+    BottomNavigationBarItem(
+        icon: Icon(FontAwesome5.lightbulb ), label: 'Activities'),
     BottomNavigationBarItem(
         icon: Icon(FontAwesome.bell), label: 'Notifications'),
     BottomNavigationBarItem(
-        icon: Icon(FontAwesome.user_circle), label: 'Profile'),
+        icon: Icon(FontAwesome.user_circle), label: 'My Account'),
   ];
 
   void setCurrentIndex(int selIndex) {
