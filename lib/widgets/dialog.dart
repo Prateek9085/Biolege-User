@@ -1,5 +1,5 @@
-import 'package:clinicapp/app/locator.dart';
-import 'package:clinicapp/widgets/reusables.dart';
+import '../app/locator.dart';
+import '../widgets/reusables.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 

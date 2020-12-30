@@ -5,17 +5,25 @@ Column buildSplashContent(String mainLogo, String subLogo) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Image.asset(
+        subLogo,
+        height: 80,
+      ),
+      SizedBox(
+        height: 30,
+      ),
+      Image.asset(
         mainLogo,
-        height: 60,
+        height: 50,
+      ),
+      SizedBox(
+        height: 50,
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(),
-          Image.asset(
-            subLogo,
-            height: 30,
-          ),
+          Text('LAB TEST'),
+          Text('DOCTOR APPOINTMENT'),
+          Text('MEDICINE'),
         ],
       ),
     ],

@@ -1,4 +1,4 @@
-import 'package:clinicapp/app/locator.dart';
+import '../../app/locator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked_services/stacked_services.dart';
 

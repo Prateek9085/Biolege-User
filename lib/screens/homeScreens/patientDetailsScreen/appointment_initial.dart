@@ -224,9 +224,9 @@ class _AppointmentPageState extends State<AppointmentPage> {
         SizedBox(height: 20),
         Column(
           children: [
-            doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
-            doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
-            doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+            Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+            Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+            Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
           ],
         ),
       ],
@@ -234,12 +234,12 @@ class _AppointmentPageState extends State<AppointmentPage> {
   }
 }
 
-class doccard extends StatelessWidget {
-  String Doccard;
+class Doccard extends StatelessWidget {
+  String doccard;
   String specialist;
 
-  doccard(String Doccard, String specialist) {
-    this.Doccard = Doccard;
+  Doccard(String doccard, String specialist) {
+    this.doccard = doccard;
     this.specialist = specialist;
   }
 
@@ -271,7 +271,7 @@ class doccard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Doccard,
+                doccard,
                 style: TextStyle(
                   fontFamily: "Nunito",
                   fontWeight: FontWeight.w400,

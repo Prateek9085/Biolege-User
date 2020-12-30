@@ -1,12 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.biolege.clinicapp">
+    package="com.biolege.user">
    <application   
-        android:label="clinicapp"
+        android:label="biolegeuser"
         android:icon="@mipmap/ic_launcher">
         <!-- <meta-data android:name="com.google.android.maps.v2.API_KEY"
                android:value="AIzaSyCEpa93jAu-ogcsr81oZpNm5o3vYuhdCVs"/> -->
         <meta-data android:name="com.google.android.geo.API_KEY" 
-               android:value="AIzaSyCEpa93jAu-ogcsr81oZpNm5o3vYuhdCVs"/>
+               android:value="AIzaSyAp1lZD0O4N2681dKxMZmCgVPXD5QwRFQ8"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -1,4 +1,4 @@
-import 'package:clinicapp/screens/rootView.dart';
+import '../../screens/rootView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -194,6 +194,7 @@ class AuthenticationService {
           codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
       // ----------------------------------------------------------------------
     } catch (e) {
+      print(e.toString());
       await _dialogService.showCustomDialog(
         barrierDismissible: true,
         variant: DialogType.basic,

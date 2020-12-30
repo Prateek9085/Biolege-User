@@ -1,4 +1,4 @@
-import 'package:clinicapp/screens/rootViewModel.dart';
+import '../screens/rootViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 

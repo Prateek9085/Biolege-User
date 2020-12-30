@@ -150,10 +150,11 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          SizedBox(height: getProportionateScreenHeight(50.0)),
           Center(
             child: Image(
               image: AssetImage(page.imagePath),
-              height: getProportionateScreenHeight(300),
+              height: getProportionateScreenHeight(400),
             ),
           ),
           SizedBox(height: getProportionateScreenHeight(50.0)),
@@ -163,7 +164,7 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
             style: TextStyle(
               fontWeight: FontWeight.w400,
               color: page.descripColor,
-              fontSize: 16,
+              fontSize: 14,
             ),
           ),
           SizedBox(height: getProportionateScreenHeight(10.0)),
