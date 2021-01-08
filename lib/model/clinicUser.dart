@@ -3,13 +3,13 @@ import 'dart:convert';
 // To parse this JSON data, use this line
 // final clinicEmployee = clinicEmployeeFromJson(jsonString);
 
-ClinicEmployee clinicEmployeeFromJson(String str) =>
-    ClinicEmployee.fromJson(json.decode(str));
+ClinicUser userFromJson(String str) =>
+    ClinicUser.fromJson(json.decode(str));
 
-String clinicEmployeeToJson(ClinicEmployee data) => json.encode(data.toJson());
+String clinicUserToJson(ClinicUser data) => json.encode(data.toJson());
 
-class ClinicEmployee {
-  ClinicEmployee({
+class ClinicUser {
+  ClinicUser({
     this.id,
     this.name,
     this.phoneNumber,
@@ -17,8 +17,8 @@ class ClinicEmployee {
     this.gender,
     this.dob,
     this.address,
-    this.role,
-    this.employeeImage,
+    //this.role,
+    //this.employeeImage,
   });
 
   String id;
@@ -28,10 +28,10 @@ class ClinicEmployee {
   String gender;
   String dob;
   Address address;
-  int role;
-  String employeeImage;
+  //int role;
+  //String employeeImage;
 
-  factory ClinicEmployee.fromJson(Map<String, dynamic> json) => ClinicEmployee(
+  factory ClinicUser.fromJson(Map<String, dynamic> json) => ClinicUser(
         id: json["_id"],
         name: json["name"],
         phoneNumber: json["phoneNumber"],
@@ -39,8 +39,8 @@ class ClinicEmployee {
         gender: json["gender"],
         dob: json["dob"],
         address: Address.fromJson(json["address"]),
-        role: json["role"],
-        employeeImage: json["employeeImage"],
+        //role: json["role"],
+        //employeeImage: json["employeeImage"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,8 +51,8 @@ class ClinicEmployee {
         "gender": gender,
         "dob": dob,
         "address": address.toJson(),
-        "role": role,
-        "employeeImage": employeeImage,
+        //"role": role,
+        //"employeeImage": employeeImage,
       };
 }
 

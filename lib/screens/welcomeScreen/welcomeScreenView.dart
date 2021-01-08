@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:user/main.dart';
 import '../../theme/theme.dart';
 import '../../widgets/animations.dart';
 
@@ -41,7 +42,7 @@ class WelcomeScreenView extends StatelessWidget {
                     FadeInLTR(
                       0.6,
                       Image.asset(
-                        model.logo,
+                        mainLogo,
                         height: getProportionateScreenHeight(30),
                       ),
                     ),
@@ -51,36 +52,36 @@ class WelcomeScreenView extends StatelessWidget {
                     FadeInLTR(
                       0.9,
                       Text(
-                        "Mr. Sourav Agarwal",
+                        model.getUserName(),
                         style: TextStyle(fontSize: 26),
                       ),
                     ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(30),
-                    ),
-                    FadeInLTR(
-                      1.2,
-                      Text(
-                        "Owner",
-                        style: TextStyle(fontSize: 18, color: offBlack2),
-                      ),
-                    ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(5),
-                    ),
-                    FadeInLTR(
-                      1.2,
-                      Text(
-                        "Raj Medical Clinic",
-                        style: TextStyle(fontSize: 20, color: offBlack2),
-                      ),
-                    ),
-                    Spacer(),
-                    FadeInLTR(
-                      1.5,
-                      buildOutlineButton(
-                          "Dashboard", model.navigateToHomePageView),
-                    ),
+                    // SizedBox(
+                    //   height: getProportionateScreenHeight(30),
+                    // ),
+                    // FadeInLTR(
+                    //   1.2,
+                    //   Text(
+                    //     "Owner",
+                    //     style: TextStyle(fontSize: 18, color: offBlack2),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: getProportionateScreenHeight(5),
+                    // ),
+                    // FadeInLTR(
+                    //   1.2,
+                    //   Text(
+                    //     "Raj Medical Clinic",
+                    //     style: TextStyle(fontSize: 20, color: offBlack2),
+                    //   ),
+                    // ),
+                    // Spacer(),
+                    // FadeInLTR(
+                    //   1.5,
+                    //   buildOutlineButton(
+                    //       "Dashboard", model.navigateToHomePageView),
+                    // ),
                   ],
                 ),
               ),

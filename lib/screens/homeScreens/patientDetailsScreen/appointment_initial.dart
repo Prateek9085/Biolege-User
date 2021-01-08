@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 // import 'search_resultpage.dart';
 // import 'doctor_page.dart';
 // import 'all_specialist.dart';
+import '../../../widgets/reusables.dart';
 
 class AppointmentPage extends StatefulWidget {
   @override
@@ -12,224 +13,224 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
-  Column container(String text, String number) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(left: 10),
-          height: 115,
-          width: 115,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-          ),
-          decoration: BoxDecoration(
-            color: Color(0xFFF1EFEF),
-            borderRadius: BorderRadius.circular(20),
-          ),
-        ),
-        Text(
-          number,
-          style: TextStyle(
-            fontWeight: FontWeight.w300,
-            fontFamily: "Nunito",
-            color: Color(0xFF808080),
-            fontSize: 10,
-          ),
-        ),
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Container(
-          margin: EdgeInsets.only(
-            left: 20,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Doctor \nAppointment",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Nunito",
-                  fontSize: 22,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              left: 20,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Doctor \nAppointment",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Nunito",
+                    fontSize: 22,
+                  ),
                 ),
-              ),
-              SvgPicture.asset(
-                'images/appointment.svg',
-                height: 170,
-              ),
-            ],
+                SvgPicture.asset(
+                  'asset/images/appointment.svg',
+                  height: 170,
+                ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 20),
-        Container(
-          height: 45,
-          margin: EdgeInsets.only(left: 15, right: 15),
-          decoration: BoxDecoration(
-            color: Color(0xFFF9F6F6),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: InkWell(
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => SearchPage()),
-              //);
-            },
-            child: TextField(
-              enabled: false,
-              decoration: InputDecoration(
-                // filled: true,
-                // fillColor: Colors.black12,
-                labelText:
-                    'Search for doctors,specialist,hospitals,clinics etc',
-                labelStyle: TextStyle(fontFamily: 'Nunito', fontSize: 13),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
-                suffixIcon: Icon(Icons.search),
+          SizedBox(height: 20),
+          Container(
+            height: 45,
+            margin: EdgeInsets.only(left: 15, right: 15),
+            decoration: BoxDecoration(
+              color: Color(0xFFF9F6F6),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: InkWell(
+              onTap: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => SearchPage()),
+                //);
+              },
+              child: TextField(
+                enabled: false,
+                decoration: InputDecoration(
+                  // filled: true,
+                  // fillColor: Colors.black12,
+                  labelText:
+                      'Search for doctors,specialist,hospitals,clinics etc',
+                  labelStyle: TextStyle(fontFamily: 'Nunito', fontSize: 13),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25))),
+                  suffixIcon: Icon(Icons.search),
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(height: 20),
-        Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Speciality",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: "Nunito",
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => AllSpecialist(),
-                  //   ),
-                  //);
-                },
-                child: Text(
-                  "View All",
+          SizedBox(height: 20),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Speciality",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontFamily: "Nunito",
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xFF808080),
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 20),
-        Row(
-          children: [
-            container("Cardiologist", "19 doctors"),
-            container("Neurologist", "10 doctors"),
-            container("Oncologist", "17 doctors"),
-          ],
-        ),
-        SizedBox(height: 20),
-        Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Hospitals and Clinics",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: "Nunito",
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => AllHospitals(),
-                  //   ),
-                  // );
-                },
-                child: Text(
-                  "View All",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Nunito",
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xFF808080),
+                InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => AllSpecialist(),
+                    //   ),
+                    //);
+                  },
+                  child: Text(
+                    "View All",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xFF808080),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 20),
-        Row(
-          children: [
-            container("", "HAMM"),
-            container("", "Dey Nursing"),
-            container("", "Star Care"),
-          ],
-        ),
-        SizedBox(height: 20),
-        Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Doctors",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: "Nunito",
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => DoctorPage(),
-                  //   ),
-                  // );
-                },
-                child: Text(
-                  "View All",
+          SizedBox(height: 20),
+          //container("Cardiologist", "19 doctors"),
+          // ListView.builder(
+          //   itemBuilder: (ctx, index) => Text('Hello'),
+          //   scrollDirection: Axis.horizontal,
+          //   //shrinkWrap: true,
+          //   physics: NeverScrollableScrollPhysics(),
+          //   primary: false,
+          //   itemCount: 4,
+          //   // children: [
+          //   //   container("Cardiologist", "19 doctors"),
+          //   //   container("Neurologist", "10 doctors"),
+          //   //   container("Oncologist", "17 doctors"),
+          //   //   container("ENT", "17 doctors"),
+          //   // ],
+          // ),
+          Container(
+            height: 140,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              children: [
+                container("Cardiologist", "19 doctors"),
+                container("Neurologist", "10 doctors"),
+                container("Oncologist", "17 doctors"),
+                container("ENT", "17 doctors"),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Hospitals and Clinics",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontFamily: "Nunito",
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xFF808080),
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
+                InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => AllHospitals(),
+                    //   ),
+                    // );
+                  },
+                  child: Text(
+                    "View All",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xFF808080),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: 140,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              children: [
+                container("", "HAMM"),
+                container("", "Dey Nursing"),
+                container("", "Star Care"),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Doctors",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: "Nunito",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => DoctorPage(),
+                    //   ),
+                    // );
+                  },
+                  child: Text(
+                    "View All",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xFF808080),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Column(
+            children: [
+              Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+              Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+              Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
             ],
           ),
-        ),
-        SizedBox(height: 20),
-        Column(
-          children: [
-            Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
-            Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
-            Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

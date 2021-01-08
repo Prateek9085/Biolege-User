@@ -21,8 +21,8 @@ class RootViewModel extends BaseViewModel {
     print(_storageService.getEmailAddress);
     print(_storageService.getDateOfBirth);
     print(_storageService.getAddress);
-    print(_storageService.getRoleType);
-    print(_storageService.getClinicName);
+    // print(_storageService.getRoleType);
+    // print(_storageService.getClinicName);
 
     if (hasLoggedIn) {
       if (_storageService.getName == null)
@@ -33,8 +33,8 @@ class RootViewModel extends BaseViewModel {
         _navigatorService.clearTillFirstAndShow(Routes.genderScreenView);
       else if (_storageService.getAddress == null)
         _navigatorService.clearTillFirstAndShow(Routes.addressScreenView);
-      else if (_storageService.getRoleType == null)
-        _navigatorService.clearTillFirstAndShow(Routes.welcomeScreenView);
+      // else if (_storageService.getRoleType == null)
+      //   _navigatorService.clearTillFirstAndShow(Routes.welcomeScreenView);
       else
         _navigatorService
             .clearStackAndShow(Routes.welcomeScreenView);

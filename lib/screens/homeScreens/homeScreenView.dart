@@ -65,7 +65,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                     ),
                     InkWell(
                       child: Text(
-                        'Appoitment',
+                        'Appointment',
                         style: TextStyle(fontFamily: 'Nunito'),
                       ),
                       onTap: () {
@@ -74,7 +74,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                     ),
                     InkWell(
                       child: Text(
-                        'Phermachy',
+                        'Pharmacy',
                         style: TextStyle(fontFamily: 'Nunito'),
                       ),
                       onTap: () {

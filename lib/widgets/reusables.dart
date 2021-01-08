@@ -7,6 +7,43 @@ import 'package:flutter/material.dart';
 
 String logoPath = "asset/images/logo.png";
 
+Widget container(String text, String number) {
+    return InkWell(
+      onTap: () => {},
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 10),
+            height: 115,
+            width: 115,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  text,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 7,
+                ),
+              ],
+            ),
+            decoration: BoxDecoration(
+              //image: DecorationImage(image: Image.asset()),
+              color: Color(0xFFF1EFEF),
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          Text(
+            number,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 10),
+          ),
+        ],
+      ),
+    );
+  }
+
 InputDecoration buildInputDecoration(String text, Icon icon) {
   return InputDecoration(
     labelText: text,
