@@ -1,5 +1,3 @@
-import 'package:user/model/clinic.dart';
-
 import '../../services/services/local_storage.dart';
 import '../../app/locator.dart';
 import '../../services/services/api_service.dart';

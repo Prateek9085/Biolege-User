@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'dart:async';
-import 'dart:typed_data';
-import 'package:user/model/clinic.dart';
 import 'package:user/model/doctor.dart';
 import 'package:http/http.dart' as http;
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/locator.dart';
 import '../../model/clinicUser.dart';
 import 'local_storage.dart';
-import 'package:http_parser/http_parser.dart';
 
 class APIServices {
   // __________________________________________________________________________

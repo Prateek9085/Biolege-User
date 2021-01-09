@@ -7,8 +7,6 @@ import 'services/filePicker_service.dart';
 import 'services/api_service.dart';
 import 'services/auth_service.dart';
 import 'services/local_storage.dart';
-import '../model/clinicUser.dart';
-import '../model/clinic.dart';
 
 abstract class ThirdPartyServicesModule {
   @lazySingleton

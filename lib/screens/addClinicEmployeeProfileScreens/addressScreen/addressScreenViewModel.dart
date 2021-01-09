@@ -70,6 +70,6 @@ class AddressViewModel extends BaseViewModel {
   }
 
   void navigateToRoleSelectView() {
-    _navigatorService.navigateTo(Routes.welcomeScreenView );
+    _navigatorService.navigateTo(Routes.welcomeScreenView);
   }
 }

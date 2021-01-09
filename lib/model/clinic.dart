@@ -4,9 +4,6 @@
 
 import 'dart:convert';
 
-import '../misc/localKeys/localStorageKeys.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 Clinic clinicFromJson(String str) => Clinic.fromJson(json.decode(str));
 
 String clinicToJson(Clinic data) => json.encode(data.toJson());
