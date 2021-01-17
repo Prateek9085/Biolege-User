@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:user/services/services/api_service.dart';
 import '../../../services/services/local_storage.dart';
 import '../../../app/locator.dart';
 import '../../../app/router.gr.dart';
@@ -11,6 +12,7 @@ class AddressViewModel extends BaseViewModel {
 
   final NavigationService _navigatorService = locator<NavigationService>();
   final StorageService _storageService = locator<StorageService>();
+  final APIServices _apiServices = locator<APIServices>();
   // _________________________________________________________________________
   // Controllers and Variables
   final addressFormKey = GlobalKey<FormState>();
@@ -65,11 +67,12 @@ class AddressViewModel extends BaseViewModel {
             address: homeAddress.text,
             city: city.text,
             pinCode: int.parse(pinCode.text),
-            state: state.text)
-        .whenComplete(() => navigateToRoleSelectView());
+            state: state.text);
+    await _apiServices.addDiagnosticCustomer()
+        .whenComplete(() => navigateToWelcomeScreenView());
   }
 
-  void navigateToRoleSelectView() {
+  void navigateToWelcomeScreenView() {
     _navigatorService.navigateTo(Routes.welcomeScreenView);
   }
 }

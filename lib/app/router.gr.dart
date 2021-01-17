@@ -9,10 +9,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/addClinicEmployeeProfileScreens/addressScreen/addressScreenView.dart';
-import '../screens/addClinicEmployeeProfileScreens/emailScreen/emailScreenView.dart';
-import '../screens/addClinicEmployeeProfileScreens/genderScreen/genderScreenView.dart';
-import '../screens/addClinicEmployeeProfileScreens/nameScreen/nameScreenView.dart';
+import '../screens/addCustomerProfileScreens/addressScreen/addressScreenView.dart';
+import '../screens/addCustomerProfileScreens/emailScreen/emailScreenView.dart';
+import '../screens/addCustomerProfileScreens/genderScreen/genderScreenView.dart';
+import '../screens/addCustomerProfileScreens/nameScreen/nameScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addBiolegeCardAddNameScreen/addBiolegeCardAddNameScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addBiolegeCardScreen/addBiolegeScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addCustomerDetailsScreen/addCustomerDetailsScreenView.dart';
@@ -26,6 +26,7 @@ import '../screens/homeScreens/doctorsListTabScreens/doctorsListScreen/doctorLis
 import '../screens/homeScreens/doctorsListTabScreens/doctorsProfileScreen/doctorsProfileScreenView.dart';
 import '../screens/homeScreens/homeScreenView.dart';
 import '../screens/homeScreens/patientDetailsScreen/patientDetailsScreenView.dart';
+import '../screens/homeScreens/selectDoctorForClinicScreen/selectDoctorClinicScreen.dart';
 import '../screens/onBoardingScreen/onBoardingScreenView.dart';
 import '../screens/rootView.dart';
 import '../screens/signUpScreens/otpScreen/otpScreenView.dart';
@@ -60,6 +61,7 @@ class Routes {
   static const String confirmScreenView = '/confirmScreenView';
   static const String doctorsListScreenView = '/doctorsListScreenView';
   static const String doctorsProfileScreenView = '/doctorsProfileScreenView';
+  static const String selectDoctorClinicScreen = '/selectDoctorClinicScreen';
   static const all = <String>{
     root,
     onBoardingScreen,
@@ -83,6 +85,7 @@ class Routes {
     confirmScreenView,
     doctorsListScreenView,
     doctorsProfileScreenView,
+    selectDoctorClinicScreen,
   };
 }
 
@@ -117,6 +120,7 @@ class Router extends RouterBase {
     RouteDef(Routes.confirmScreenView, page: ConfirmScreenView),
     RouteDef(Routes.doctorsListScreenView, page: DoctorsListScreenView),
     RouteDef(Routes.doctorsProfileScreenView, page: DoctorsProfileScreenView),
+    RouteDef(Routes.selectDoctorClinicScreen, page: SelectDoctorClinicScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -250,6 +254,12 @@ class Router extends RouterBase {
     DoctorsProfileScreenView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => DoctorsProfileScreenView(),
+        settings: data,
+      );
+    },
+    SelectDoctorClinicScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SelectDoctorClinicScreen(),
         settings: data,
       );
     },

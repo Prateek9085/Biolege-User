@@ -49,6 +49,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
               ]),
           body: Column(
             children: [
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 margin: EdgeInsets.only(left: 20, right: 20),
                 child: Row(

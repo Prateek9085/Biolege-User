@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'clinic.dart';
+
 Doctor doctorFromJson(String str) => Doctor.fromJson(json.decode(str));
 
 String doctorToJson(Doctor data) => json.encode(data.toJson());
@@ -27,6 +29,7 @@ class Doctor {
     this.feedbacks,
     this.articles,
     this.clinics,
+    this.customers,
     this.v,
   });
 
@@ -47,6 +50,7 @@ class Doctor {
   List<Article> feedbacks;
   List<Article> articles;
   List<ClinicElement> clinics;
+  List<CustomerElement> customers;
   int v;
 
   factory Doctor.fromJson(Map<String, dynamic> json) => Doctor(
@@ -72,6 +76,8 @@ class Doctor {
             json["articles"].map((x) => Article.fromJson(x))),
         clinics: List<ClinicElement>.from(
             json["clinics"].map((x) => ClinicElement.fromJson(x))),
+        customers: List<CustomerElement>.from(
+            json["customers"].map((x) => CustomerElement.fromJson(x))),
         v: json["__v"],
       );
 
@@ -93,6 +99,7 @@ class Doctor {
         "feedbacks": List<dynamic>.from(feedbacks.map((x) => x.toJson())),
         "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
         "clinics": List<dynamic>.from(clinics.map((x) => x.toJson())),
+        "customers": List<dynamic>.from(customers.map((x) => x.toJson())),
         "__v": v,
       };
 }
@@ -267,7 +274,7 @@ class Education {
   });
 
   String id;
-  String educationRegistrationNumber;
+  int educationRegistrationNumber;
   int educationStartYear;
   int educationEndYear;
   String educationDegree;

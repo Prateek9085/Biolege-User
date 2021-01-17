@@ -10,113 +10,88 @@ String clinicToJson(Clinic data) => json.encode(data.toJson());
 
 class Clinic {
   Clinic({
-    this.id,
     this.address,
     this.location,
-    this.services,
     this.name,
     this.phoneNumber,
-    this.ownerName,
-    this.locationType,
-    this.ownerIdProofName,
-    this.ownerPhoneNumber,
+    this.role,
     this.logo,
-    this.ownerIdProof,
     this.addressProof,
+    this.ownerName,
+    this.ownerPhoneNumber,
+    this.ownerIdProofName,
+    this.ownerIdProof,
+    this.services,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+    this.clinicEmployee,
+    this.id,
+    this.customers,
   });
 
-  String id;
   Address address;
   Location location;
-  List<String> services;
   String name;
   int phoneNumber;
-  int locationType;
-  String ownerName;
-  String ownerIdProofName;
-  int ownerPhoneNumber;
+  dynamic role;
   String logo;
-  String ownerIdProof;
   String addressProof;
-
-  // Future initClinicData() async {
-  //   try {
-  //     SharedPreferences _localStorage = await SharedPreferences.getInstance();
-  //     id = _localStorage.getString(clinicIdLocalStorageKey);
-  //     // .......................................................................
-  //     name = _localStorage.getString(clinicNameLocalStorageKey);
-  //     // ------------------------------------------------------------------
-  //     phoneNumber = _localStorage.getInt(clinicPhoneNumberLocalStorageKey);
-  //     // ------------------------------------------------------------------
-  //     locationType = _localStorage.getInt(clinicLocationTypeLocalStorageKey);
-  //     // ------------------------------------------------------------------
-  //     logo = _localStorage.getString(clinicLogoLocalStorageKey);
-  //     // .......................................................................
-
-  //     location = Location(
-  //         latitude:
-  //             _localStorage.getDouble(clinicLocationLatitudeLocalStorageKey),
-  //         longitude:
-  //             _localStorage.getDouble(clinicLocationLongitudeLocalStorageKey));
-
-  //     address = Address(
-  //         city: _localStorage.getString(clinicCityNameLocalStorageKey),
-  //         clinicAddress: _localStorage.getString(clinicAddressLocalStorageKey),
-  //         pincode:
-  //             int.parse(_localStorage.getString(clinicPinCodeLocalStorageKey)),
-  //         state: _localStorage.getString(clinicStateNameLocalStorageKey));
-  //     // .......................................................................
-  //     addressProof = _localStorage.getString(clinicAddressProofLocalStorageKey);
-  //     // .......................................................................
-  //     ownerName = _localStorage.getString(clinicOwnerNameLocalStorageKey);
-  //     // ------------------------------------------------------------------
-  //     ownerPhoneNumber = _localStorage.getInt(clinicOwnerPhoneLocalStorageKey);
-  //     // ------------------------------------------------------------------
-  //     ownerIdProofName =
-  //         _localStorage.getInt(clinicOwnerIdProofTypeLocalStorageKey) == 0
-  //             ? "PAN Card"
-  //             : _localStorage.getInt(clinicOwnerIdProofTypeLocalStorageKey) == 1
-  //                 ? "Aadhar Card"
-  //                 : "Voter Card";
-  //     // ------------------------------------------------------------------
-  //     ownerIdProof = _localStorage.getString(clinicOwnerIdProofLocalStorageKey);
-
-  //     //........................................................................
-  //     services = _localStorage.getStringList(clinicServicesLocalStorageKey);
-  //     //........................................................................
-  //   } catch (e) {
-  //     print("Error thrown in Init Clinic : " + e.toString());
-  //   }
-  // }
+  String ownerName;
+  int ownerPhoneNumber;
+  String ownerIdProofName;
+  String ownerIdProof;
+  List<String> services;
+  DateTime createdAt;
+  DateTime updatedAt;
+  int v;
+  List<ClinicEmployeeObject> clinicEmployee;
+  String id;
+  List<CustomerElement> customers;
 
   factory Clinic.fromJson(Map<String, dynamic> json) => Clinic(
-        id: json["id"],
         address: Address.fromJson(json["address"]),
         location: Location.fromJson(json["location"]),
-        services: List<String>.from(json["services"].map((x) => x)),
         name: json["name"],
         phoneNumber: json["phoneNumber"],
-        ownerName: json["ownerName"],
-        ownerIdProofName: json["ownerIdProofName"],
-        ownerPhoneNumber: json["ownerPhoneNumber"],
+        role: json["role"],
         logo: json["logo"],
-        ownerIdProof: json["ownerIdProof"],
         addressProof: json["addressProof"],
+        ownerName: json["ownerName"],
+        ownerPhoneNumber: json["ownerPhoneNumber"],
+        ownerIdProofName: json["ownerIdProofName"],
+        ownerIdProof: json["ownerIdProof"],
+        services: List<String>.from(json["services"].map((x) => x)),
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        v: json["__v"],
+        clinicEmployee: List<ClinicEmployeeObject>.from(json["clinicEmployee"]
+            .map((x) => ClinicEmployeeObject.fromJson(x))),
+        id: json["_id"],
+        customers: List<CustomerElement>.from(
+            json["customers"].map((x) => CustomerElement.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "address": address.toJson(),
         "location": location.toJson(),
-        "services": List<dynamic>.from(services.map((x) => x)),
         "name": name,
         "phoneNumber": phoneNumber,
-        "ownerName": ownerName,
-        "ownerIdProofName": ownerIdProofName,
-        "ownerPhoneNumber": ownerPhoneNumber,
+        "role": role,
         "logo": logo,
-        "ownerIdProof": ownerIdProof,
         "addressProof": addressProof,
+        "ownerName": ownerName,
+        "ownerPhoneNumber": ownerPhoneNumber,
+        "ownerIdProofName": ownerIdProofName,
+        "ownerIdProof": ownerIdProof,
+        "services": List<dynamic>.from(services.map((x) => x)),
+        "createdAt": createdAt.toIso8601String(),
+        "updatedAt": updatedAt.toIso8601String(),
+        "__v": v,
+        "clinicEmployee":
+            List<dynamic>.from(clinicEmployee.map((x) => x.toJson())),
+        "_id": id,
+        "customers": List<dynamic>.from(customers.map((x) => x.toJson())),
       };
 }
 
@@ -124,46 +99,101 @@ class Address {
   Address({
     this.state,
     this.city,
-    this.clinicAddress,
     this.pincode,
+    this.clinicAddress,
   });
 
   String state;
   String city;
-  String clinicAddress;
   int pincode;
+  String clinicAddress;
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(
         state: json["state"],
         city: json["city"],
-        clinicAddress: json["clinicAddress"],
         pincode: json["pincode"],
+        clinicAddress: json["clinicAddress"],
       );
 
   Map<String, dynamic> toJson() => {
         "state": state,
         "city": city,
-        "clinicAddress": clinicAddress,
         "pincode": pincode,
+        "clinicAddress": clinicAddress,
+      };
+}
+
+class ClinicEmployeeObject {
+  ClinicEmployeeObject({this.id});
+
+  String id;
+
+  factory ClinicEmployeeObject.fromJson(Map<String, dynamic> json) =>
+      ClinicEmployeeObject(id: json["_id"]);
+
+  Map<String, dynamic> toJson() => {"_id": id};
+}
+
+class CustomerElement {
+  CustomerElement({
+    this.appointmentDate,
+    this.id,
+    this.customer,
+  });
+
+  List<DateTime> appointmentDate;
+  String id;
+  CustomerCustomer customer;
+
+  factory CustomerElement.fromJson(Map<String, dynamic> json) =>
+      CustomerElement(
+        appointmentDate: List<DateTime>.from(
+            json["appointmentDate"].map((x) => DateTime.parse(x))),
+        id: json["_id"],
+        customer: CustomerCustomer.fromJson(json["customer"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "appointmentDate":
+            List<dynamic>.from(appointmentDate.map((x) => x.toIso8601String())),
+        "_id": id,
+        "customer": customer.toJson(),
+      };
+}
+
+class CustomerCustomer {
+  CustomerCustomer({
+    this.id,
+  });
+
+  String id;
+
+  factory CustomerCustomer.fromJson(Map<String, dynamic> json) =>
+      CustomerCustomer(
+        id: json["_id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "_id": id,
       };
 }
 
 class Location {
   Location({
-    this.latitude,
     this.longitude,
+    this.latitude,
   });
 
-  double latitude;
   double longitude;
+  double latitude;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-        latitude: json["latitude"].toDouble(),
         longitude: json["longitude"].toDouble(),
+        latitude: json["latitude"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {
-        "latitude": latitude,
         "longitude": longitude,
+        "latitude": latitude,
       };
 }

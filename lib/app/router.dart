@@ -5,10 +5,10 @@
 // _____________________________________________________________________________
 import 'package:auto_route/auto_route_annotations.dart';
 import '../screens/rootView.dart';
-import '../screens/addClinicEmployeeProfileScreens/addressScreen/addressScreenView.dart';
-import '../screens/addClinicEmployeeProfileScreens/emailScreen/emailScreenView.dart';
-import '../screens/addClinicEmployeeProfileScreens/genderScreen/genderScreenView.dart';
-import '../screens/addClinicEmployeeProfileScreens/nameScreen/nameScreenView.dart';
+import '../screens/addCustomerProfileScreens/addressScreen/addressScreenView.dart';
+import '../screens/addCustomerProfileScreens/emailScreen/emailScreenView.dart';
+import '../screens/addCustomerProfileScreens/genderScreen/genderScreenView.dart';
+import '../screens/addCustomerProfileScreens/nameScreen/nameScreenView.dart';
 import '../screens/onBoardingScreen/onBoardingScreenView.dart';
 import '../screens/homeScreens/doctorsListTabScreens/doctorsListScreen/doctorListScreenView.dart';
 import '../screens/homeScreens/doctorsListTabScreens/doctorsProfileScreen/doctorsProfileScreenView.dart';
@@ -26,6 +26,7 @@ import '../screens/homeScreens/homeScreenView.dart';
 import '../screens/welcomeScreen/welcomeScreenView.dart';
 import '../screens/signUpScreens/otpScreen/otpScreenView.dart';
 import '../screens/signUpScreens/phoneNumberScreen/phoneScreenView.dart';
+import '../screens/homeScreens/selectDoctorForClinicScreen/selectDoctorClinicScreen.dart';
 
 @MaterialAutoRouter(routes: <AutoRoute>[
   // ___________________________________________________________________________
@@ -124,6 +125,10 @@ import '../screens/signUpScreens/phoneNumberScreen/phoneScreenView.dart';
   MaterialRoute(
     path: DoctorsProfileScreenView.routeName,
     page: DoctorsProfileScreenView,
+  ),
+  MaterialRoute(
+    path: SelectDoctorClinicScreen.routeName,
+    page: SelectDoctorClinicScreen,
   ),
   // ___________________________________________________________________________
 ])

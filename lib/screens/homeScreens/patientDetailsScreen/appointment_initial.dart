@@ -2,10 +2,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:user/app/locator.dart';
+import 'package:user/app/router.gr.dart';
 // import 'search_resultpage.dart';
 // import 'doctor_page.dart';
 // import 'all_specialist.dart';
 import '../../../widgets/reusables.dart';
+import './search_resultpage.dart';
 
 class AppointmentPage extends StatefulWidget {
   @override
@@ -13,6 +17,7 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
+  final NavigationService _navigatorService = locator<NavigationService>();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +55,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: InkWell(
-              onTap: () {
+              onTap: () {_navigatorService.navigateTo(Routes.selectDoctorClinicScreen);
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(builder: (context) => SearchPage()),
