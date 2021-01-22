@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:user/model/clinic.dart';
+import 'package:user/screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
 import 'package:user/services/services/api_service.dart';
 import '../../../model/doctor.dart';
 import '../../../app/locator.dart';
@@ -32,6 +33,8 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
   List<Clinic> results1 = [];
   List<Doctor> doctorsList = [];
   List<Clinic> clinicsList = [];
+  Map<String, List<Doctor>> specialisationList = {};
+  List<String> special = [];
   // Map<String, ClinicElement> clinicDetailsOfDoctor;
   // __________________________________________________________________________
   // Helper functions
@@ -52,9 +55,19 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
     setBusy(false);
   }
 
+  void getSpecialisationList() async {
+    setBusy(true);
+    specialisationList = _dataFromApiService.getSpecialisationDoctors;
+
+    print(specialisationList);
+    setBusy(false);
+  }
+
   void search() {
     results.clear();
-    print(doctorsList);
+    results1.clear();
+    special.clear();
+    //print(doctorsList);
     doctorsList.forEach((doc) =>
         (doc.name.toLowerCase().contains(searchedText.text.toLowerCase()))
             ? results.add(doc)
@@ -65,7 +78,18 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
             ? results1.add(cli)
             : null);
 
-    if (searchedText.text.length == 0) results.clear();
+    specialisationList.keys.forEach((spe) =>
+        (spe.toLowerCase().contains(searchedText.text.toLowerCase()))
+            ? special.add(spe)
+            : null);
+
+    if (searchedText.text.length == 0) {
+      results.clear();
+      results1.clear();
+      special.clear();
+    }
+    print(results1);
+    print(results);
     notifyListeners();
   }
 
@@ -73,11 +97,17 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
     _navigatorService.navigateToView(DoctorsProfileScreenView());
   }
 
+  void clinicProfileView(Clinic clinic) async {
+    _dataFromApiService.setClinic(clinic);
+    _navigatorService.navigateToView(ClinicProfileScreenView());
+  }
+
   @override
   Future futureToRun() async {
     try {
       getDoctorsList();
       getClinicsList();
+      getSpecialisationList();
     } catch (e) {
       print("Error." + e.toString());
     }

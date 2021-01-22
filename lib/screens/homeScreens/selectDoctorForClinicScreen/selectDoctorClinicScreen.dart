@@ -54,6 +54,14 @@ class SelectDoctorClinicScreen extends StatelessWidget {
                         SizedBox(
                           height: getProportionateScreenHeight(10),
                         ),
+                        Text(
+                          'Doctors:',
+                          style:
+                              TextStyle(fontSize: 14, color: Colors.blue[600]),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(10),
+                        ),
                         model.results.length != 0
                             ? ListView.builder(
                                 primary: false,
@@ -87,8 +95,12 @@ class SelectDoctorClinicScreen extends StatelessWidget {
                                           style: TextStyle(fontSize: 14),
                                         ),
                                         subtitle: Text(model.results[index]
-                                                .specialization[0] ??
-                                            ''),
+                                                    .specialization.length !=
+                                                0
+                                            ? model.results[index]
+                                                    .specialization[0] ??
+                                                ''
+                                            : ''),
                                         // trailing: model.clinicDetailsOfDoctor
                                         //         .containsKey(
                                         //             model.results[index].id)
@@ -106,6 +118,141 @@ class SelectDoctorClinicScreen extends StatelessWidget {
                                 children: [
                                   Center(
                                     child: Text("No doctors to show"),
+                                  ),
+                                ],
+                              ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(10),
+                        ),
+                        Text(
+                          'Clinics:',
+                          style:
+                              TextStyle(fontSize: 14, color: Colors.blue[600]),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(10),
+                        ),
+                        model.results1.length != 0
+                            ? ListView.builder(
+                                primary: false,
+                                itemCount: model.results1.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return FadeInLTR(
+                                    0.1,
+                                    Card(
+                                      // color: offWhite,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: white, width: 0.1),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: ListTile(
+                                        onTap: () => model.clinicProfileView(
+                                            model.clinicsList[index]),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 20),
+                                        leading: CircleAvatar(
+                                          radius: 25.0,
+                                          // backgroundImage: NetworkImage(
+                                          //     'https://via.placeholder.com/150'),
+                                          backgroundColor: Colors.black12,
+                                        ),
+                                        title: Text(
+                                          model.results1[index].name,
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        subtitle: Text(model
+                                                .results1[index].phoneNumber
+                                                .toString() ??
+                                            ''),
+                                        // trailing: model.clinicDetailsOfDoctor
+                                        //         .containsKey(
+                                        //             model.results[index].id)
+                                        //     ? Text("Already added",
+                                        //         style: TextStyle(fontSize: 10))
+                                        trailing: Text(
+                                          "Show info",
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })
+                            : Column(
+                                children: [
+                                  Center(
+                                    child: Text("No clinics to show"),
+                                  ),
+                                ],
+                              ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(10),
+                        ),
+                        Text(
+                          'Specialities:',
+                          style:
+                              TextStyle(fontSize: 14, color: Colors.blue[600]),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(10),
+                        ),
+                        model.special.length != 0
+                            ? ListView.builder(
+                                primary: false,
+                                itemCount: model.special.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return FadeInLTR(
+                                    0.1,
+                                    Card(
+                                      // color: offWhite,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: white, width: 0.1),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: ListTile(
+                                        // onTap: () => model.clinicProfileView(
+                                        //     model.clinicsList[index]),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 20),
+                                        leading: CircleAvatar(
+                                          radius: 25.0,
+                                          // backgroundImage: NetworkImage(
+                                          //     'https://via.placeholder.com/150'),
+                                          backgroundColor: Colors.black12,
+                                        ),
+                                        title: Text(
+                                          model.special[index],
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        subtitle: Text(model
+                                                    .specialisationList[
+                                                        model.special[index]]
+                                                    .length
+                                                    .toString() +
+                                                ' Doctors' ??
+                                            ''),
+                                        // trailing: model.clinicDetailsOfDoctor
+                                        //         .containsKey(
+                                        //             model.results[index].id)
+                                        //     ? Text("Already added",
+                                        //         style: TextStyle(fontSize: 10))
+                                        trailing: Text(
+                                          "Show info",
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })
+                            : Column(
+                                children: [
+                                  Center(
+                                    child: Text("No specialities to show"),
                                   ),
                                 ],
                               ),

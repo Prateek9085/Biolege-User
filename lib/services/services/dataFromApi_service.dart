@@ -22,11 +22,66 @@ class DataFromApi {
   // Data to be used globally for all clinics
   static List<Clinic> _clinicsList;
   List<Clinic> get getAllClinics => _clinicsList;
+  List<String> _specialisation = [
+    'Allergist',
+    'Anaesthesiologist',
+    'Andrologist',
+    'Cardiologist',
+    'Cardiac Electrophysiologist',
+    'Dermatologist',
+    'Emergency Room (ER) Doctors',
+    'Endocrinologist',
+    'Epidemiologist',
+    'Family Medicine Physic Gastroenterologist',
+    'Geriatrician',
+    'Hyperbaric Physician',
+    'Hematologist',
+    'Hepatologist',
+    'Immunologist',
+    'Infectious Disease Specialist',
+    'Intensivist',
+    'Internal Medicine Specialist',
+    'Maxillofacial Surgeon / Oral Surgeon',
+    'Medical Examiner',
+    'Medical Geneticist',
+    'Neonatologist',
+    'Nephrologist',
+    'Neurologist',
+    'Neurosurgeon',
+    'Nuclear Medicine Specialist',
+    'Obstetrician/Gynecologist (OB/GYN)',
+    'Occupational Medicine Specialist',
+    'Oncologist',
+    'Ophthalmologist /  Eye specialist',
+    'Orthopedic Surgeon / Orthopedist',
+    'Otolaryngologist (also ENT Specialist)',
+    'Parasitologist',
+    'Pathologist',
+    'Perinatologist',
+    'Periodontist',
+    'Pediatrician',
+    'Physiatrist',
+    'Plastic Surgeon',
+    'Psychiatrist',
+    'Pulmonologist',
+    'Radiologist',
+    'Rheumatologist',
+    'Sleep Doctor / Sleep Disorders Specialist',
+    'Spinal Cord Injury Specialist',
+    'Sports Medicine Specialist',
+    'Surgeon',
+    'Thoracic Surgeon',
+    'Urologist',
+    'Vascular Surgeon',
+    'Dentist',
+    'Palliative Care Specialist',
+  ];
+
   void setclinicList(List<Clinic> x) => _clinicsList = x;
   // ___________________________________________________________________________
   // Data to be used globally for current employee
   //static ClinicEmployee _employee;
-  //get getClinicEmployee => _employee;
+  //get getClinicEmployee => _employee;b
   //void setClinicEmployee(ClinicEmployee x) => _employee = x;
   // ___________________________________________________________________________
   // Data to be used in the doctors tab in bottom navigation bar for doctor's
@@ -90,6 +145,24 @@ class DataFromApi {
     print("All clinics saved");
   }
 
+  static Map<String, List<Doctor>> _specialisationDoctors;
+  Map<String, List<Doctor>> get getSpecialisationDoctors =>
+      _specialisationDoctors;
+
+  Future sortBySpecialisation() async {
+    _specialisationDoctors = {};
+    _doctorsList.forEach((doctor) {
+      if (doctor.specialization.isNotEmpty)
+        doctor.specialization.forEach((spl) {
+          print(spl);
+          if (_specialisationDoctors.containsKey(spl))
+            _specialisationDoctors[spl].add(doctor);
+          else
+            _specialisationDoctors[spl] = [doctor];
+        });
+    });
+    print(_specialisationDoctors);
+  }
   // Future setDiagnosticCustomersList() async {
   //   _diagnosticCustomersList = [];
   //   _diagnosticCustomersList = await _apiServices.getAllDiagnosticCustomers();

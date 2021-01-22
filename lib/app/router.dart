@@ -4,6 +4,7 @@
 // flutter pub run build_runner build --delete-conflicting-outputs
 // _____________________________________________________________________________
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:user/screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
 import '../screens/rootView.dart';
 import '../screens/addCustomerProfileScreens/addressScreen/addressScreenView.dart';
 import '../screens/addCustomerProfileScreens/emailScreen/emailScreenView.dart';
@@ -38,6 +39,11 @@ import '../screens/homeScreens/selectDoctorForClinicScreen/selectDoctorClinicScr
   MaterialRoute(
     path: OnBoardingScreen.routeName,
     page: OnBoardingScreen,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: ClinicProfileScreenView.routeName,
+    page: ClinicProfileScreenView,
   ),
   // ___________________________________________________________________________
   MaterialRoute(

@@ -22,13 +22,13 @@ Widget buildOnBoardingScreen(
         description: 'Order medicine from home\nGet lightning fast medicine delivery at your doorstep',
         titleColor: Colors.transparent,
         descripColor: offBlack,
-        imagePath: 'asset/images/2.png'),
+        imagePath: 'asset/images/3.png'),
     SkOnboardingModel(
         title: '',
         description: 'Keep all your health recordsin one platform',
         titleColor: primaryColor,
         descripColor: offBlack,
-        imagePath: 'asset/images/3.png'),
+        imagePath: 'asset/images/4.png'),
   ];
 
   return SKOnboardingScreen(

@@ -79,9 +79,11 @@ class RootViewModel extends BaseViewModel {
           _navigatorService.clearTillFirstAndShow(Routes.genderScreenView);
         else if (_storageService.getAddress == null)
           _navigatorService.clearTillFirstAndShow(Routes.addressScreenView);
-        else
+        else {
+          await _dataFromApiService.sortBySpecialisation();
           _navigatorService.pushNamedAndRemoveUntil(Routes.homeScreenView,
               predicate: (_) => false);
+        }
         // else if (_storageService.getRoleType == null)
         //   _navigatorService.clearTillFirstAndShow(Routes.roleSelectScreenView);
         // else if (_storageService.getClinicName == null ||

@@ -185,16 +185,18 @@ class ClinicElement {
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory ClinicElement.fromJson(Map<String, dynamic> json) => ClinicElement(
-        id: json["_id"],
-        clinic: ClinicClinic.fromJson(json["clinic"]),
-        days: List<Day>.from(json["days"].map((x) => Day.fromJson(x))),
-        fees: json["fees"],
-        avgTime: json["avgTime"],
-        avgPatientPerDay: json["avgPatientPerDay"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
-      );
+  factory ClinicElement.fromJson(Map<String, dynamic> json) {
+    return ClinicElement(
+      id: json["_id"],
+      clinic: ClinicClinic.fromJson(json["clinic"]),
+      days: List<Day>.from(json["days"].map((x) => Day.fromJson(x))),
+      fees: json["fees"],
+      avgTime: json["avgTime"],
+      avgPatientPerDay: json["avgPatientPerDay"],
+      createdAt: DateTime.parse(json["createdAt"]),
+      updatedAt: DateTime.parse(json["updatedAt"]),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "_id": id,
@@ -205,6 +207,13 @@ class ClinicElement {
         "avgPatientPerDay": avgPatientPerDay,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
+      };
+  Map<String, dynamic> toJsonForPut() => {
+        "clinic": clinic.toJson(),
+        "days": [],
+        "fees": fees,
+        "avgTime": avgTime,
+        "avgPatientPerDay": avgPatientPerDay,
       };
 }
 

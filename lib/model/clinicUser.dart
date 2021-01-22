@@ -20,7 +20,6 @@ class DiagnosticCustomer {
     this.gender,
     this.dob,
     this.bloodGroup,
-    this.clinics,
     this.doctors,
     this.createdAt,
     this.updatedAt,
@@ -35,8 +34,7 @@ class DiagnosticCustomer {
   String gender;
   DateTime dob;
   String bloodGroup;
-  List<ObjectWithID> clinics;
-  List<DoctorObj> doctors;
+  List<DoctorObject> doctors;
   DateTime createdAt;
   DateTime updatedAt;
   int v;
@@ -51,10 +49,8 @@ class DiagnosticCustomer {
         gender: json["gender"],
         dob: DateTime.parse(json["dob"]),
         bloodGroup: json["bloodGroup"],
-        clinics: List<ObjectWithID>.from(
-            json["clinics"].map((x) => ObjectWithID.fromJson(x))),
-        doctors: List<DoctorObj>.from(
-            json["doctors"].map((x) => DoctorObj.fromJson(x))),
+        doctors: List<DoctorObject>.from(
+            json["doctors"].map((x) => DoctorObject.fromJson(x))),
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
@@ -69,7 +65,6 @@ class DiagnosticCustomer {
         "gender": gender,
         "dob": dob.toIso8601String(),
         "bloodGroup": bloodGroup,
-        "clinics": List<dynamic>.from(clinics.map((x) => x.toJson())),
         "doctors": List<dynamic>.from(doctors.map((x) => x.toJson())),
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
@@ -105,22 +100,25 @@ class Address {
       };
 }
 
-class DoctorObj {
-  DoctorObj({
+class DoctorObject {
+  DoctorObject({
     this.visitingDate,
     this.id,
     this.doctor,
+    this.clinic,
   });
 
   List<DateTime> visitingDate;
   String id;
   ObjectWithID doctor;
+  ObjectWithID clinic;
 
-  factory DoctorObj.fromJson(Map<String, dynamic> json) => DoctorObj(
+  factory DoctorObject.fromJson(Map<String, dynamic> json) => DoctorObject(
         visitingDate: List<DateTime>.from(
             json["visitingDate"].map((x) => DateTime.parse(x))),
         id: json["_id"],
         doctor: ObjectWithID.fromJson(json["doctor"]),
+        clinic: ObjectWithID.fromJson(json["clinic"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -128,6 +126,13 @@ class DoctorObj {
             List<dynamic>.from(visitingDate.map((x) => x.toIso8601String())),
         "_id": id,
         "doctor": doctor.toJson(),
+        "clinic": clinic.toJson(),
+      };
+  Map<String, dynamic> toJsonForPut() => {
+        "visitingDate":
+            List<dynamic>.from(visitingDate.map((x) => x.toIso8601String())),
+        "doctor": doctor.toJson(),
+        "clinic": clinic.toJson(),
       };
 }
 

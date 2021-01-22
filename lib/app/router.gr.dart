@@ -22,6 +22,7 @@ import '../screens/homeScreens/addCustomerScreens/timeAndDateSelectionScreen/tim
 import '../screens/homeScreens/appointmentHomeScreen/appointmentHomeScreenView.dart';
 import '../screens/homeScreens/changeAppointmentDetailsScreen/changeAppointmentDetailsScreenView.dart';
 import '../screens/homeScreens/customerDoctorSelectionScreen/customerDoctorSelectionScreenView.dart';
+import '../screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
 import '../screens/homeScreens/doctorsListTabScreens/doctorsListScreen/doctorListScreenView.dart';
 import '../screens/homeScreens/doctorsListTabScreens/doctorsProfileScreen/doctorsProfileScreenView.dart';
 import '../screens/homeScreens/homeScreenView.dart';
@@ -36,6 +37,7 @@ import '../screens/welcomeScreen/welcomeScreenView.dart';
 class Routes {
   static const String root = '/root';
   static const String onBoardingScreen = '/onBoardingScreen';
+  static const String clinicProfileScreenView = '/clinicProfileScreenView';
   static const String phoneScreenView = '/phoneScreenView';
   static const String oTPScreenView = '/otpScreenView';
   static const String nameScreenView = '/nameScreenView';
@@ -65,6 +67,7 @@ class Routes {
   static const all = <String>{
     root,
     onBoardingScreen,
+    clinicProfileScreenView,
     phoneScreenView,
     oTPScreenView,
     nameScreenView,
@@ -95,6 +98,7 @@ class Router extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.root, page: Root),
     RouteDef(Routes.onBoardingScreen, page: OnBoardingScreen),
+    RouteDef(Routes.clinicProfileScreenView, page: ClinicProfileScreenView),
     RouteDef(Routes.phoneScreenView, page: PhoneScreenView),
     RouteDef(Routes.oTPScreenView, page: OTPScreenView),
     RouteDef(Routes.nameScreenView, page: NameScreenView),
@@ -134,6 +138,12 @@ class Router extends RouterBase {
     OnBoardingScreen: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => OnBoardingScreen(),
+        settings: data,
+      );
+    },
+    ClinicProfileScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ClinicProfileScreenView(),
         settings: data,
       );
     },
