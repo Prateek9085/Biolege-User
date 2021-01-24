@@ -28,6 +28,9 @@ import '../screens/homeScreens/doctorsListTabScreens/doctorsProfileScreen/doctor
 import '../screens/homeScreens/homeScreenView.dart';
 import '../screens/homeScreens/patientDetailsScreen/patientDetailsScreenView.dart';
 import '../screens/homeScreens/selectDoctorForClinicScreen/selectDoctorClinicScreen.dart';
+import '../screens/homeScreens/showAllScreen/showAllClinicScreen/showAllClinicsScreenView.dart';
+import '../screens/homeScreens/showAllScreen/showAllDoctorsScreen/showAllDoctorsScreenView.dart';
+import '../screens/homeScreens/showAllScreen/showAllSpecialityScreen/showAllSpecialityScreenView.dart';
 import '../screens/onBoardingScreen/onBoardingScreenView.dart';
 import '../screens/rootView.dart';
 import '../screens/signUpScreens/otpScreen/otpScreenView.dart';
@@ -41,6 +44,10 @@ class Routes {
   static const String phoneScreenView = '/phoneScreenView';
   static const String oTPScreenView = '/otpScreenView';
   static const String nameScreenView = '/nameScreenView';
+  static const String showAllDoctorsScreenView = '/showAllDoctorsScreenView';
+  static const String showAllClinicsScreenView = '/showAllClinicsScreenView';
+  static const String showAllSpecialityScreenView =
+      '/showAllSpecialityScreenView';
   static const String genderScreenView = '/genderScreenView';
   static const String emailScreenView = '/emailScreenView';
   static const String addressScreenView = '/addressScreenView';
@@ -71,6 +78,9 @@ class Routes {
     phoneScreenView,
     oTPScreenView,
     nameScreenView,
+    showAllDoctorsScreenView,
+    showAllClinicsScreenView,
+    showAllSpecialityScreenView,
     genderScreenView,
     emailScreenView,
     addressScreenView,
@@ -102,6 +112,10 @@ class Router extends RouterBase {
     RouteDef(Routes.phoneScreenView, page: PhoneScreenView),
     RouteDef(Routes.oTPScreenView, page: OTPScreenView),
     RouteDef(Routes.nameScreenView, page: NameScreenView),
+    RouteDef(Routes.showAllDoctorsScreenView, page: ShowAllDoctorsScreenView),
+    RouteDef(Routes.showAllClinicsScreenView, page: ShowAllClinicsScreenView),
+    RouteDef(Routes.showAllSpecialityScreenView,
+        page: ShowAllSpecialityScreenView),
     RouteDef(Routes.genderScreenView, page: GenderScreenView),
     RouteDef(Routes.emailScreenView, page: EmailScreenView),
     RouteDef(Routes.addressScreenView, page: AddressScreenView),
@@ -162,6 +176,24 @@ class Router extends RouterBase {
     NameScreenView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => NameScreenView(),
+        settings: data,
+      );
+    },
+    ShowAllDoctorsScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ShowAllDoctorsScreenView(),
+        settings: data,
+      );
+    },
+    ShowAllClinicsScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ShowAllClinicsScreenView(),
+        settings: data,
+      );
+    },
+    ShowAllSpecialityScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ShowAllSpecialityScreenView(),
         settings: data,
       );
     },

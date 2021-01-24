@@ -1,6 +1,4 @@
 import 'package:user/model/clinic.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:user/model/clinic.dart';
 import 'package:user/model/clinicUser.dart';
 
 import '../../services/services/local_storage.dart';
@@ -162,6 +160,24 @@ class DataFromApi {
         });
     });
     print(_specialisationDoctors);
+  }
+
+  Future setDoctorsListForClinic(String id) async {
+    String clinicId = id;
+    // Filtering the doctors which work for Clinic Id
+    _doctorsListForClinic = [];
+    _clinicDetailsOfDoctor = {};
+
+    _doctorsList.forEach((doctor) =>
+        doctor.clinics.forEach((clinic) => clinic.clinic.id == clinicId
+            ? {
+                _doctorsListForClinic.add(doctor),
+                _clinicDetailsOfDoctor.putIfAbsent(doctor.id, () => clinic)
+              }
+            : null));
+
+    print("Clinic Details for Clinic ID : $clinicId , is saved");
+    print("Doctors for Clinic ID : $clinicId , is saved ");
   }
   // Future setDiagnosticCustomersList() async {
   //   _diagnosticCustomersList = [];

@@ -177,14 +177,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                             ),
                           ),
                           InkWell(
-                            onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => AllSpecialist(),
-                              //   ),
-                              //);
-                            },
+                            onTap: () => model.navigateToShowAllSpecialityScreen(),
                             child: Text(
                               "View All",
                               style: TextStyle(
@@ -243,7 +236,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           ? ListView.builder(
                               scrollDirection: Axis.horizontal,
                               primary: false,
-                              itemCount: model.specialisationList.length,
+                              itemCount: model.specialisationList.length < 5
+                                  ? model.specialisationList.length
+                                  : 5,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return FadeInLTR(
@@ -262,10 +257,11 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                               const EdgeInsets.symmetric(
                                                   vertical: 10, horizontal: 20),
                                           title: Text(
-                                            model.specialisationList.keys
+                                            '\n' +
+                                                model.specialisationList.keys
                                                     .elementAt(index)
                                                     .toString() +
-                                                '\n\n',
+                                                '\n',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(fontSize: 14),
                                           ),
@@ -287,7 +283,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           : Column(
                               children: [
                                 Center(
-                                  child: Text("No specialt to show"),
+                                  child: Text("No specialty to show"),
                                 ),
                               ],
                             ),
@@ -307,14 +303,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                             ),
                           ),
                           InkWell(
-                            onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => AllHospitals(),
-                              //   ),
-                              // );
-                            },
+                            onTap: () => model.navigateToShowAllClinicsScreen(),
                             child: Text(
                               "View All",
                               style: TextStyle(
@@ -344,7 +333,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           ? ListView.builder(
                               scrollDirection: Axis.horizontal,
                               primary: false,
-                              itemCount: model.clinicsList.length,
+                              itemCount: model.clinicsList.length < 5
+                                  ? model.clinicsList.length
+                                  : 5,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return FadeInLTR(
@@ -371,7 +362,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                           backgroundColor: Colors.black12,
                                         ),
                                         subtitle: Text(
-                                          model.clinicsList[index].name,
+                                          '\n' + model.clinicsList[index].name,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(fontSize: 14),
                                         ),
@@ -423,14 +414,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                             ),
                           ),
                           InkWell(
-                            onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => DoctorPage(),
-                              //   ),
-                              // );
-                            },
+                            onTap: () => model.navigateToShowAllDoctorsScreen(),
                             child: Text(
                               "View All",
                               style: TextStyle(
@@ -455,7 +439,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                     model.doctorsList.length != 0
                         ? ListView.builder(
                             primary: false,
-                            itemCount: model.doctorsList.length,
+                            itemCount: model.doctorsList.length < 5
+                                ? model.doctorsList.length
+                                : 5,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return FadeInLTR(

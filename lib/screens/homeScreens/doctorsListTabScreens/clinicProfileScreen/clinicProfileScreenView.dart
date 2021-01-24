@@ -213,7 +213,114 @@ class _ClinicProfileScreenViewState extends State<ClinicProfileScreenView> {
                         ),
                         SizedBox(
                           height: getProportionateScreenHeight(30),
-                        )
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Doctors",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: "Nunito",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => DoctorPage(),
+                                  //   ),
+                                  // );
+                                },
+                                child: Text(
+                                  "View All",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: "Nunito",
+                                    fontWeight: FontWeight.w300,
+                                    color: Color(0xFF808080),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        // Column(
+                        //   children: [
+                        //     Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+                        //     Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+                        //     Doccard("Dr Hemmant Singh Rathore", "Chest Specialist"),
+                        //   ],
+                        // ),
+                        model.getDoctorsList.length != 0
+                            ? ListView.builder(
+                                primary: false,
+                                itemCount: model.getDoctorsList.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return FadeInLTR(
+                                    0.1,
+                                    Card(
+                                      // color: offWhite,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: white, width: 0.1),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: ListTile(
+                                        onTap: () =>
+                                            model.profileDescriptionView(
+                                                model.getDoctorsList[index]),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 20),
+                                        leading: CircleAvatar(
+                                          radius: 25.0,
+                                          // backgroundImage: NetworkImage(
+                                          //     'https://via.placeholder.com/150'),
+                                          backgroundColor: Colors.black12,
+                                        ),
+                                        title: Text(
+                                          model.getDoctorsList[index].name,
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        subtitle: Text(model
+                                                    .getDoctorsList[index]
+                                                    .specialization
+                                                    .length !=
+                                                0
+                                            ? model.getDoctorsList[index]
+                                                    .specialization[0] ??
+                                                ''
+                                            : ''),
+                                        // trailing: model.clinicDetailsOfDoctor
+                                        //         .containsKey(
+                                        //             model.results[index].id)
+                                        //     ? Text("Already added",
+                                        //         style: TextStyle(fontSize: 10))
+                                        trailing: Text(
+                                          "Show info",
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })
+                            : Column(
+                                children: [
+                                  Center(
+                                    child: Text("No doctors to show"),
+                                  ),
+                                ],
+                              ),
+                        SizedBox(
+                          height: 100,
+                        ),
                       ],
                     ),
                   ),

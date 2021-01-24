@@ -69,10 +69,11 @@ class AddressViewModel extends BaseViewModel {
             pinCode: int.parse(pinCode.text),
             state: state.text);
     await _apiServices.addDiagnosticCustomer()
-        .whenComplete(() => navigateToWelcomeScreenView());
+        .whenComplete(() => navigateToWelcomeScreen());
   }
 
-  void navigateToWelcomeScreenView() {
-    _navigatorService.navigateTo(Routes.welcomeScreenView);
+  void navigateToWelcomeScreen() {
+    _navigatorService.pushNamedAndRemoveUntil(Routes.root,
+        predicate: (route) => false);
   }
 }

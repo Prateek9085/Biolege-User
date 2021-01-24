@@ -3,6 +3,9 @@ import 'dart:typed_data';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:user/app/router.gr.dart';
+import 'package:user/model/doctor.dart';
+import 'package:user/services/services/helperData_service.dart';
 import '../../../../app/locator.dart';
 import '../../../../services/services/local_storage.dart';
 import '../../../../services/services/filePicker_service.dart';
@@ -17,6 +20,8 @@ class ClinicProfileScreenViewModel extends FutureViewModel {
   final FilePickHelperService _filePickHelperService =
       locator<FilePickHelperService>();
   final StorageService _storageService = locator<StorageService>();
+  final NavigationService _navigatorService = locator<NavigationService>();
+  final DoctorAppointments _doctorAppointments = locator<DoctorAppointments>();
   // final NavigationService _navigatorService = locator<NavigationService>();
 
   // __________________________________________________________________________
@@ -29,6 +34,22 @@ class ClinicProfileScreenViewModel extends FutureViewModel {
 
   Uint8List _clinicLogoToDisplay;
   Uint8List get getClinicLogoToShow => _clinicLogoToDisplay;
+
+  List<Doctor> _doctorList;
+  List<Doctor> get getDoctorsList => _doctorList;
+
+  void setDoctorsList() async {
+    setBusy(true);
+
+    _doctorList = _dataFromApiService.getDoctorsListForClinic;
+
+    setBusy(false);
+  }
+
+  void profileDescriptionView(Doctor doctor) async {
+    _doctorAppointments.setSelectedDoctorToShow(doctor);
+    _navigatorService.navigateTo(Routes.doctorsProfileScreenView);
+  }
 
   void showMap() async {
     String lat = _clinic.location.latitude.toString();
@@ -50,6 +71,7 @@ class ClinicProfileScreenViewModel extends FutureViewModel {
       _clinic = _dataFromApiService.getClinic;
       _clinicLogoToDisplay = _filePickHelperService
           .dataFromBase64String(_dataFromApiService.getClinic.logo);
+      setDoctorsList();
       // _clinicLocationType = _storageService.getClinicLocationType == 0
       //     ? "Attach to pharmacy"
       //     : _storageService.getClinicLocationType == null

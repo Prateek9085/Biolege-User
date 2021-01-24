@@ -8,10 +8,9 @@ import 'package:user/app/router.gr.dart';
 import 'package:user/model/clinic.dart';
 import 'package:user/model/doctor.dart';
 import 'package:user/services/services/dataFromApi_service.dart';
-import 'doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
+import 'package:user/services/services/helperData_service.dart';
 import 'doctorsListTabScreens/doctorsListScreen/doctorListScreenView.dart';
 import 'appointmentHomeScreen/appointmentHomeScreenView.dart';
-import 'doctorsListTabScreens/doctorsProfileScreen/doctorsProfileScreenView.dart';
 
 class HomeScreenViewModel extends FutureViewModel {
   final widgetOptions = [
@@ -22,6 +21,7 @@ class HomeScreenViewModel extends FutureViewModel {
   ];
   final DataFromApi _dataFromApiService = locator<DataFromApi>();
   final NavigationService _navigatorService = locator<NavigationService>();
+  final DoctorAppointments _doctorAppointments = locator<DoctorAppointments>();
 
   List<Doctor> doctorsList = [];
   List<Clinic> clinicsList = [];
@@ -76,12 +76,26 @@ class HomeScreenViewModel extends FutureViewModel {
   }
 
   void profileDescriptionView(Doctor doctor) async {
+    _doctorAppointments.setSelectedDoctorToShow(doctor);
     _navigatorService.navigateTo(Routes.doctorsProfileScreenView);
   }
 
   void clinicProfileView(Clinic clinic) async {
+    await _dataFromApiService.setDoctorsListForClinic(clinic.id);
     _dataFromApiService.setClinic(clinic);
     _navigatorService.navigateTo(Routes.clinicProfileScreenView);
+  }
+
+  void navigateToShowAllDoctorsScreen() async {
+    _navigatorService.navigateTo(Routes.showAllDoctorsScreenView);
+  }
+
+  void navigateToShowAllClinicsScreen() async {
+    _navigatorService.navigateTo(Routes.showAllClinicsScreenView);
+  }
+
+  void navigateToShowAllSpecialityScreen() async {
+    _navigatorService.navigateTo(Routes.showAllSpecialityScreenView);
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
+import 'package:user/services/services/helperData_service.dart';
 import 'services/dataFromApi_service.dart';
 import 'services/filePicker_service.dart';
 import 'services/api_service.dart';
@@ -26,4 +27,5 @@ abstract class ThirdPartyServicesModule {
   DialogService get dialogService;
   SnackbarService get snackbarService;
   FilePickHelperService get filePickHelperService;
+  DoctorAppointments get doctorAppointment;
 }

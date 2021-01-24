@@ -3,22 +3,22 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:user/model/clinic.dart';
 import 'package:user/screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
-import 'package:user/services/services/api_service.dart';
 import '../../../model/doctor.dart';
 import '../../../app/locator.dart';
 import '../../../services/services/dataFromApi_service.dart';
 import '../../../screens/homeScreens/doctorsListTabScreens/doctorsProfileScreen/doctorsProfileScreenView.dart';
+
 // import '../../../model/clinic.dart';
 // import '../../../model/clinicEmployee.dart';
 // import '../../../services/services/auth_service.dart';
 // import '../../../services/services/local_storage.dart';
-
+// import 'package:user/services/services/api_service.dart';
 class SelectDoctorClinicScreenViewModel extends FutureViewModel {
   // __________________________________________________________________________
   // Locating the Dependencies
   final NavigationService _navigatorService = locator<NavigationService>();
   final DataFromApi _dataFromApiService = locator<DataFromApi>();
-  final APIServices _apiServices = locator<APIServices>();
+  // final APIServices _apiServices = locator<APIServices>();
   // final AuthenticationService _authenticationService =
   //     locator<AuthenticationService>();
   // final StorageService _storageService = locator<StorageService>();
@@ -98,6 +98,7 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
   }
 
   void clinicProfileView(Clinic clinic) async {
+    await _dataFromApiService.setDoctorsListForClinic(clinic.id);
     _dataFromApiService.setClinic(clinic);
     _navigatorService.navigateToView(ClinicProfileScreenView());
   }

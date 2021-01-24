@@ -5,6 +5,9 @@
 // _____________________________________________________________________________
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:user/screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
+import 'package:user/screens/homeScreens/showAllScreen/showAllClinicScreen/showAllClinicsScreenView.dart';
+import 'package:user/screens/homeScreens/showAllScreen/showAllDoctorsScreen/showAllDoctorsScreenView.dart';
+import 'package:user/screens/homeScreens/showAllScreen/showAllSpecialityScreen/showAllSpecialityScreenView.dart';
 import '../screens/rootView.dart';
 import '../screens/addCustomerProfileScreens/addressScreen/addressScreenView.dart';
 import '../screens/addCustomerProfileScreens/emailScreen/emailScreenView.dart';
@@ -58,6 +61,21 @@ import '../screens/homeScreens/selectDoctorForClinicScreen/selectDoctorClinicScr
   MaterialRoute(
     path: NameScreenView.routeName,
     page: NameScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: ShowAllDoctorsScreenView.routeName,
+    page: ShowAllDoctorsScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: ShowAllClinicsScreenView.routeName,
+    page: ShowAllClinicsScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: ShowAllSpecialityScreenView.routeName,
+    page: ShowAllSpecialityScreenView,
   ),
   MaterialRoute(
     path: GenderScreenView.routeName,
