@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:user/model/clinic.dart';
 import 'package:user/screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
+import 'package:user/services/services/helperData_service.dart';
 import '../../../model/doctor.dart';
 import '../../../app/locator.dart';
 import '../../../services/services/dataFromApi_service.dart';
@@ -18,6 +19,7 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
   // Locating the Dependencies
   final NavigationService _navigatorService = locator<NavigationService>();
   final DataFromApi _dataFromApiService = locator<DataFromApi>();
+  final DoctorAppointments _doctorAppointments = locator<DoctorAppointments>();
   // final APIServices _apiServices = locator<APIServices>();
   // final AuthenticationService _authenticationService =
   //     locator<AuthenticationService>();
@@ -94,6 +96,7 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
   }
 
   void profileDescriptionView(Doctor doctor) async {
+    _doctorAppointments.setSelectedDoctorToShow(doctor);
     _navigatorService.navigateToView(DoctorsProfileScreenView());
   }
 
