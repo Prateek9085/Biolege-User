@@ -37,7 +37,6 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
   List<Clinic> clinicsList = [];
   Map<String, List<Doctor>> specialisationList = {};
   List<String> special = [];
-  // Map<String, ClinicElement> clinicDetailsOfDoctor;
   // __________________________________________________________________________
   // Helper functions
 
@@ -69,7 +68,6 @@ class SelectDoctorClinicScreenViewModel extends FutureViewModel {
     results.clear();
     results1.clear();
     special.clear();
-    //print(doctorsList);
     doctorsList.forEach((doc) =>
         (doc.name.toLowerCase().contains(searchedText.text.toLowerCase()))
             ? results.add(doc)
