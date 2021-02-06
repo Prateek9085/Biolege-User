@@ -17,6 +17,11 @@ class PatientDetails {
   // ___________________________________________________________________________
   // __________________________________________________________________________
   // Variables
+
+  static String _appointmentId;
+  String get getAppointmentID => _appointmentId;
+  void setAppointmentID(String x) => _appointmentId = x;
+  // ----------------------------------------------------------------
   static String _doctorsPatientPhoneNumber;
   String getDoctorsPatientPhoneNumber() => _doctorsPatientPhoneNumber;
   void setDoctorsPatientPhoneNumber(String phone) =>
@@ -63,17 +68,17 @@ class PatientDetails {
       _doctorsPatientHomeAddress = address;
   // ----------------------------------------------------------------
   static String _doctorsPatientDiagnosticID;
-  String getDoctorsPatientDiagnosticID() => _doctorsPatientDiagnosticID;
+  String get getDoctorsPatientDiagnosticID => _doctorsPatientDiagnosticID;
   void setDoctorsPatientDiagnosticID(String id) =>
       _doctorsPatientDiagnosticID = id;
   // ----------------------------------------------------------------
   static Doctor _doctorsPatientSelectedDoctor;
-  Doctor getDoctorsPatientSelectedDoctor() => _doctorsPatientSelectedDoctor;
+  Doctor get getDoctorsPatientSelectedDoctor => _doctorsPatientSelectedDoctor;
   void setDoctorsPatientSelectedDoctor(Doctor doc) =>
       _doctorsPatientSelectedDoctor = doc;
   // ----------------------------------------------------------------
   static DateTime _doctorsPatientSelectedDate;
-  DateTime getDoctorsPatientSelectedDate() => _doctorsPatientSelectedDate;
+  DateTime get getDoctorsPatientSelectedDate => _doctorsPatientSelectedDate;
   void setDoctorsPatientSelectedDate(DateTime dt) =>
       _doctorsPatientSelectedDate = dt;
   // __________________________________________________________________________
@@ -85,42 +90,40 @@ class PatientDetails {
   // ----------------------------------------------------------------
   // Prepare the data for sending to the Clinic and Doctor Object
   CustomerElement customerDetailsWithAppointmentDateObjectToBeSentIfDoesntExist(
-      CustomerCustomer cs) {
+      CustomerCustomer cs, bool isCompleted) {
     return CustomerElement(
       id: _doctorsPatientDiagnosticID,
       customer: cs,
       appointmentDate: [
-        AppointmentDate(date: _doctorsPatientSelectedDate, isCompleted: 0)
+        AppointmentDate(
+            id: _appointmentId,
+            date: _doctorsPatientSelectedDate,
+            isCompleted: isCompleted == false ? 0 : 1)
       ],
     );
   }
 
   // ----------------------------------------------------------------
-  String latestCustomersListToBeSent(List<CustomerElement> lce) {
-    var object = [];
-    lce.forEach((customer) => object.add(customer.toJson()));
-    return jsonEncode({'customers': object});
+
+  Future<bool> setDiagnosticCustomerFromDatabase() async {
+    DiagnosticCustomer dgc = await _apiServices
+        .getDiagnosticCustomerByPhone(_doctorsPatientPhoneNumber);
+
+    if (dgc == null) return false;
+    _doctorsPatientDiagnosticID = dgc.id;
+    _doctorsPatientPhoneNumber = dgc.phoneNumber.toString();
+    _doctorsPatientName = dgc.name;
+    _doctorsPatientDob = dgc.dob;
+    _doctorsPatientGender = dgc.gender;
+    _doctorsPatientAge =
+        (DateTime.now().difference(dgc.dob).inDays / 365).floor();
+    _doctorsPatientBloodGroup = dgc.bloodGroup;
+    _doctorsPatientStateName = dgc.address.state;
+    _doctorsPatientCityName = dgc.address.city;
+    _doctorsPatientPinCode = dgc.address.pincode.toString();
+    _doctorsPatientHomeAddress = dgc.address.homeAddress;
+    return true;
   }
-
-  // Future<bool> setDiagnosticCustomerFromDatabase() async {
-  //   DiagnosticCustomer dgc = await _apiServices
-  //       .getDiagnosticCustomerByPhone(_doctorsPatientPhoneNumber);
-
-  //   if (dgc == null) return false;
-  //   _doctorsPatientDiagnosticID = dgc.id;
-  //   _doctorsPatientPhoneNumber = dgc.phoneNumber.toString();
-  //   _doctorsPatientName = dgc.name;
-  //   _doctorsPatientDob = dgc.dob;
-  //   _doctorsPatientGender = dgc.gender;
-  //   _doctorsPatientAge =
-  //       (DateTime.now().difference(dgc.dob).inDays / 365).floor();
-  //   _doctorsPatientBloodGroup = dgc.bloodGroup;
-  //   _doctorsPatientStateName = dgc.address.state;
-  //   _doctorsPatientCityName = dgc.address.city;
-  //   _doctorsPatientPinCode = dgc.address.pincode.toString();
-  //   _doctorsPatientHomeAddress = dgc.address.homeAddress;
-  //   return true;
-  // }
 
   // ----------------------------------------------------------------
   void resetAllDoctorPatientVariable() {

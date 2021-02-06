@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:stacked/stacked.dart';
+import 'package:user/widgets/animations.dart';
 import '../../../../app/size_configuration.dart';
 import '../../../../theme/theme.dart';
 import '../../../../widgets/reusables.dart';
@@ -424,6 +425,18 @@ class DoctorsProfileScreenView extends StatelessWidget {
                                                                     .w400),
                                                       ),
                                                       null)),
+                                          SizedBox(
+                                            height:
+                                                getProportionateScreenHeight(
+                                                    20),
+                                          ),
+                                          FadeInLTR(
+                                              1.5,
+                                              buildOutlineButton(
+                                                "Continue",
+                                                model
+                                                    .navigateToTimeAndDateSelectionScreen,
+                                              )),
                                           // ListView.builder(
                                           //   primary: false,
                                           //   shrinkWrap: true,

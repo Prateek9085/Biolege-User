@@ -9,16 +9,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../model/doctor.dart';
 import '../screens/addCustomerProfileScreens/addressScreen/addressScreenView.dart';
 import '../screens/addCustomerProfileScreens/emailScreen/emailScreenView.dart';
 import '../screens/addCustomerProfileScreens/genderScreen/genderScreenView.dart';
 import '../screens/addCustomerProfileScreens/nameScreen/nameScreenView.dart';
+import '../screens/appointmentScreens/timeAndDateSelectionScreen/timeAndDateSelectionScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addBiolegeCardAddNameScreen/addBiolegeCardAddNameScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addBiolegeCardScreen/addBiolegeScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addCustomerDetailsScreen/addCustomerDetailsScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addCustomerScreen/addCustomerScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/confirmationScreen/confirmScreenView.dart';
-import '../screens/homeScreens/addCustomerScreens/timeAndDateSelectionScreen/timeAndDateSelectionScreenView.dart';
 import '../screens/homeScreens/appointmentHomeScreen/appointmentHomeScreenView.dart';
 import '../screens/homeScreens/changeAppointmentDetailsScreen/changeAppointmentDetailsScreenView.dart';
 import '../screens/homeScreens/customerDoctorSelectionScreen/customerDoctorSelectionScreenView.dart';
@@ -276,8 +277,14 @@ class Router extends RouterBase {
       );
     },
     TimeAndDateSelectionScreenView: (data) {
+      final args = data.getArgs<TimeAndDateSelectionScreenViewArguments>(
+        orElse: () => TimeAndDateSelectionScreenViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => TimeAndDateSelectionScreenView(),
+        builder: (context) => TimeAndDateSelectionScreenView(
+          doctor: args.doctor,
+          clinicDetails: args.clinicDetails,
+        ),
         settings: data,
       );
     },
@@ -306,4 +313,15 @@ class Router extends RouterBase {
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// TimeAndDateSelectionScreenView arguments holder class
+class TimeAndDateSelectionScreenViewArguments {
+  final Doctor doctor;
+  final ClinicElement clinicDetails;
+  TimeAndDateSelectionScreenViewArguments({this.doctor, this.clinicDetails});
 }

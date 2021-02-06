@@ -143,6 +143,22 @@ class DataFromApi {
     print("All clinics saved");
   }
 
+  Future setDiagnosticCustomersList() async {
+    _diagnosticCustomersList = [];
+    _diagnosticCustomersList = await _apiServices.getAllDiagnosticCustomers();
+    print("All diagnostic customers saved");
+  }
+
+  Map<String, Clinic> _clinicsById;
+  Map<String, Clinic> get getClinicsById => _clinicsById;
+
+  Future setClinicsById() async {
+    _clinicsById = {};
+    _clinicsList.forEach((element) {
+      _clinicsById[element.id] = element;
+    });
+  }
+
   static Map<String, List<Doctor>> _specialisationDoctors;
   Map<String, List<Doctor>> get getSpecialisationDoctors =>
       _specialisationDoctors;

@@ -4,6 +4,7 @@
 // flutter pub run build_runner build --delete-conflicting-outputs
 // _____________________________________________________________________________
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:user/screens/appointmentScreens/timeAndDateSelectionScreen/timeAndDateSelectionScreenView.dart';
 import 'package:user/screens/homeScreens/doctorsListTabScreens/clinicProfileScreen/clinicProfileScreenView.dart';
 import 'package:user/screens/homeScreens/showAllScreen/showAllClinicScreen/showAllClinicsScreenView.dart';
 import 'package:user/screens/homeScreens/showAllScreen/showAllDoctorsScreen/showAllDoctorsScreenView.dart';
@@ -17,7 +18,6 @@ import '../screens/onBoardingScreen/onBoardingScreenView.dart';
 import '../screens/homeScreens/doctorsListTabScreens/doctorsListScreen/doctorListScreenView.dart';
 import '../screens/homeScreens/doctorsListTabScreens/doctorsProfileScreen/doctorsProfileScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/confirmationScreen/confirmScreenView.dart';
-import '../screens/homeScreens/addCustomerScreens/timeAndDateSelectionScreen/timeAndDateSelectionScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addBiolegeCardAddNameScreen/addBiolegeCardAddNameScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addBiolegeCardScreen/addBiolegeScreenView.dart';
 import '../screens/homeScreens/addCustomerScreens/addCustomerDetailsScreen/addCustomerDetailsScreenView.dart';
@@ -43,7 +43,7 @@ import '../screens/homeScreens/selectDoctorForClinicScreen/selectDoctorClinicScr
     path: OnBoardingScreen.routeName,
     page: OnBoardingScreen,
   ),
-  // ___________________________________________________________________________
+// ___________________________________________________________________________
   MaterialRoute(
     path: ClinicProfileScreenView.routeName,
     page: ClinicProfileScreenView,

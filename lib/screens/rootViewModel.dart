@@ -81,6 +81,7 @@ class RootViewModel extends BaseViewModel {
           _navigatorService.clearTillFirstAndShow(Routes.addressScreenView);
         else {
           await _dataFromApiService.sortBySpecialisation();
+          await _dataFromApiService.getClinicsById;
           _navigatorService.pushNamedAndRemoveUntil(Routes.homeScreenView,
               predicate: (_) => false);
         }

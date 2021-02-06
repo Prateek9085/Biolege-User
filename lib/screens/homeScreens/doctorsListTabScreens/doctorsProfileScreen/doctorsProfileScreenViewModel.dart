@@ -67,6 +67,10 @@ class DoctorsProfileScreenViewModel extends FutureViewModel {
         message: docName + " was added to your clinic");
   }
 
+  void navigateToTimeAndDateSelectionScreen() {
+    _navigatorService.navigateTo(Routes.timeAndDateSelectionScreenView);
+  }
+
   @override
   Future futureToRun() async {
     try {
